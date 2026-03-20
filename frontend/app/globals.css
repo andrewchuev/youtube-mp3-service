@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-slate-50 text-slate-950 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100;
+    background-image:
+      radial-gradient(circle at top, rgba(59, 130, 246, 0.10), transparent 32%),
+      radial-gradient(circle at right top, rgba(239, 68, 68, 0.08), transparent 18%);
+  }
+
+  html.dark body {
+    background-image:
+      radial-gradient(circle at top, rgba(59, 130, 246, 0.14), transparent 30%),
+      radial-gradient(circle at right top, rgba(244, 63, 94, 0.10), transparent 18%);
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+
+  ::selection {
+    @apply bg-red-500/20 text-inherit;
+  }
+}
